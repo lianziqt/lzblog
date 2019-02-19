@@ -12,6 +12,23 @@
               type="text/css">
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">
         {{ pagedown.include_pagedown() }}
+        <style type="text/css">
+            h1{
+                font-size:45px;
+            }
+            h2{
+                font-size: 35px;
+            }
+            h3{
+                font-size: 25px;
+            }
+            p{
+                font-size: 15px;
+            }
+            body{
+                font-size: 15px;
+            }
+        </style>
     {% endblock head %}
 </head>
 <body>

@@ -26,7 +26,8 @@ def redirect_back(default='blog.index', **kwargs):
 def to_html(raw):
     allowed_tags = ['a', 'abbr', 'b', 'br', 'blockquote', 'code', 
                     'del', 'div', 'em', 'img', 'p', 'pre', 'strong',
-                    'span', 'ul', 'li', 'ol', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6']
+                    'span', 'ul', 'li', 'ol', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6','hr']
+                    
     allowed_attributes = ['src', 'title', 'alt', 'href', 'class']
     
     html = markdown(raw, output_format='html')

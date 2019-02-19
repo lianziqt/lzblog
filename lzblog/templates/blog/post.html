@@ -28,7 +28,7 @@
         </small>
     </div>
     <div class="row">
-        <div class="col-sm-8">
+        <div class="article">
             {{ post.html_body|safe }}
             <hr>
             <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target=".postLinkModal">分享
@@ -135,8 +135,9 @@
                 <div class="tip"><h5>禁止评论</h5></div>
             {% endif %}
         </div>
-        <div class="col-sm-4 sidebar">
+<!--         <div class="col-sm-4 sidebar">
             {% include "blog/_sidebar.html" %}
         </div>
+ --> 
     </div>
 {% endblock %}

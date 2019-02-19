@@ -23,6 +23,7 @@ class SettingForm(FlaskForm):
 class PostForm(FlaskForm):
     title = StringField('标题|Title', validators=[DataRequired(), Length(1, 60)])
     category = SelectField('类别|Category', coerce=int, default=1)
+    summary = PageDownField('简介|Summary', validators=[DataRequired()])
     body = PageDownField('正文|Body', validators=[DataRequired()])
     submit = SubmitField('提交|Submit')
 
@@ -36,7 +37,7 @@ class CategoryForm(FlaskForm):
     submit = SubmitField('提交|Submit')
 
     def validate_name(self, field):
-        if Category.query.filter_by(name=field.data).first:
+        if Category.query.filter_by(name=field.data).first():
             raise ValidationError('类别已存在|Name already in use.')
 
 class CommentForm(FlaskForm):

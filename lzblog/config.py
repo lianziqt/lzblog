@@ -30,7 +30,7 @@ class BaseConfig(object):
 
     LZBLOG_EMAIL = os.getenv('LZBLOG_EMAIL')
     LZBLOG_POST_PER_PAGE = 10
-    LZBLOG__MANAGE_POST_PER_PAGE = 15
+    LZBLOG_MANAGE_POST_PER_PAGE = 15
     LZBLOG_COMMENT_PER_PAGE = 15
     # ('theme name', 'display name')
     LZBLOG_THEMES = {'night': 'Black Swan', 'minty': 'Minty', 'materia':'Material'}

@@ -221,3 +221,8 @@ def register_database_listener(app):
     @db.event.listens_for(Post.markdown_body, 'set')
     def markdow_to_html(target, value, oldvalue, initiator):
         target.html_body = to_html(value)
+
+    @db.event.listens_for(Post.markdown_summary, 'set')
+    def markdow_to_html(target, value, oldvalue, initiator):
+        target.html_summary = to_html(value)
+

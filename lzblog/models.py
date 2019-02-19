@@ -41,6 +41,9 @@ class Post(db.Model):
     title = db.Column(db.String(60))
     markdown_body = db.Column(db.Text)
     html_body = db.Column(db.Text)
+    markdown_summary = db.Column(db.Text)
+    html_summary = db.Column(db.Text)
+    
     timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     can_comment = db.Column(db.Boolean, default=True)
 

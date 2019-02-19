@@ -32,12 +32,12 @@ def settings():
     return render_template('admin/settings.html', form=form)
 
 
-@admin_bp.route('/post/manage')
+@admin_bp.route('/post/manage', methods=['GET', 'POST'])
 @login_required
 def manage_post():
     page = request.args.get('page', 1, type=int)
     pagination = Post.query.order_by(Post.timestamp.desc()).paginate(
-        page, per_page=current_app.config['BLUELOG_MANAGE_POST_PER_PAGE'])
+        page, per_page=current_app.config['LZBLOG_MANAGE_POST_PER_PAGE'])
     posts = pagination.items
     return render_template('admin/manage_post.html', page=page, pagination=pagination, posts=posts)
 
@@ -48,9 +48,10 @@ def new_post():
     form = PostForm()
     if form.validate_on_submit():
         title = form.title.data
+        summary = form.summary.data
         body = form.body.data
         category = Category.query.get(form.category.data)
-        post = Post(title=title, markdown_body=body, category=category)
+        post = Post(title=title, markdown_summary=summary, markdown_body=body, category=category)
         # same with:
         # category_id = form.category.data
         # post = Post(title=title, body=body, category_id=category_id)
@@ -68,12 +69,15 @@ def edit_post(post_id):
     post = Post.query.get_or_404(post_id)
     if form.validate_on_submit():
         post.title = form.title.data
+        post.markdown_summary = form.summary.data
         post.markdown_body = form.body.data
         post.category = Category.query.get(form.category.data)
         db.session.commit()
         flash('编辑成功', 'success')
         return redirect(url_for('blog.show_post', post_id=post.id))
+        
     form.title.data = post.title
+    form.summary.data = post.markdown_summary
     form.body.data = post.markdown_body
     form.category.data = post.category_id
     return render_template('admin/edit_post.html', form=form)
