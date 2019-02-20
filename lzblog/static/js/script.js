@@ -15,7 +15,7 @@ $(document).ready(function(){
     $(".card").mouseout(function(){
         $(this).css({"box-shadow":''});
       });
-    $("pre").addClass("p-3 mb-2 bg-dark text-white");
+    $("pre").addClass("p-3 mb-2");
     $(".flask-pagedown-preview").addClass("p-3 mb-2 bg-light text-dark");
       
 })
